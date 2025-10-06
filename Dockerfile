@@ -13,8 +13,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Instala dependências
-RUN npm ci --only=production && npm cache clean --force
+# Instala TODAS as dependências (incluindo dev, necessárias para o build)
+RUN npm ci && npm cache clean --force
 
 # Copia código fonte
 COPY src/ ./src/
@@ -35,7 +35,7 @@ RUN apk add --no-cache dumb-init
 # Define diretório de trabalho
 WORKDIR /app
 
-# Copia dependências do estágio de build
+# Copia apenas o necessário do build
 COPY --from=builder --chown=anota-ai:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=anota-ai:nodejs /app/dist ./dist
 COPY --from=builder --chown=anota-ai:nodejs /app/package*.json ./
