@@ -217,7 +217,11 @@ export class App {
           },
         ],
       },
-      apis: ['./src/routes/*.ts'], // Caminho para os arquivos com anotações Swagger
+      apis: [
+      process.env.NODE_ENV === 'production'
+        ? './dist/routes/*.js'
+        : './src/routes/*.ts'
+      ], // Caminho para os arquivos com anotações Swagger
     };
 
     const swaggerSpec = swaggerJsdoc(swaggerOptions);
