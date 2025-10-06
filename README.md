@@ -2,6 +2,11 @@
 
 API robusta e escalável para contagem de acessos e gerenciamento de usuários, desenvolvida com TypeScript, Express.js e MongoDB.
 
+### Base URL HOSPEDADO:
+```
+anotaai-api-w0gx.onrender.com
+```
+
 ## 🚀 Funcionalidades
 
 ### ✅ Requisitos Implementados
