@@ -194,8 +194,12 @@ export class App {
         },
         servers: [
           {
-            url: `http://localhost:${config.node.port}`,
-            description: 'Servidor de desenvolvimento',
+            url: process.env.RENDER_EXTERNAL_URL 
+              ? `${process.env.RENDER_EXTERNAL_URL}` 
+              : `http://localhost:${config.node.port}`,
+            description: process.env.RENDER_EXTERNAL_URL 
+              ? 'Servidor de produção' 
+              : 'Servidor de desenvolvimento',
           },
         ],
         tags: [
